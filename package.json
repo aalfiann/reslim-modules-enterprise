@@ -1,0 +1,19 @@
+{
+    "package": {
+        "name": "Enterprise",
+        "url": "https://github.com/aalfiann/reslim-modules-enterprise",
+        "description": "Enterprise management system",
+        "version": "1.0",
+        "require": {
+            "reSlim": "1.9.0"
+        },
+        "license": {
+            "type": "MIT",
+            "url": "https://github.com/aalfiann/reslim-modules-enterprise/LICENSE.md"
+        },
+        "author": {
+            "name": "M ABD AZIZ ALFIAN",
+            "url": "https://github.com/aalfiann"
+        }
+    }
+}
