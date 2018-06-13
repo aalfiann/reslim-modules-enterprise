@@ -1,10 +1,6 @@
 <?php
 /**
- * This class is a part of reSlim project
- * @author M ABD AZIZ ALFIAN <github.com/aalfiann>
- *
- * Don't remove this class unless You know what to do
- *
+ * This class is a part of enterprise module
  */
 namespace modules\enterprise;
 use \classes\Auth as Auth;
@@ -18,7 +14,7 @@ use PDO;
      * @package    Enterprise User
      * @author     M ABD AZIZ ALFIAN <github.com/aalfiann>
      * @copyright  Copyright (c) 2018 M ABD AZIZ ALFIAN
-     * @license    https://github.com/aalfiann/reSlim/blob/master/license.md  MIT License
+     * @license    https://github.com/aalfiann/reSlim-modules-enterprise/blob/master/license.md  MIT License
      */
 	class User {
         // model data user

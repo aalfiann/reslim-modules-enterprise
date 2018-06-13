@@ -1,10 +1,6 @@
 <?php
 /**
- * This class is a part of reSlim project
- * @author M ABD AZIZ ALFIAN <github.com/aalfiann>
- *
- * Don't remove this class unless You know what to do
- *
+ * This class is a part of enterprise module
  */
 namespace modules\enterprise;
 use \classes\Auth as Auth;
@@ -16,7 +12,7 @@ use PDO;
      * @package    Enterprise Utilities
      * @author     M ABD AZIZ ALFIAN <github.com/aalfiann>
      * @copyright  Copyright (c) 2018 M ABD AZIZ ALFIAN
-     * @license    https://github.com/aalfiann/reSlim-b2b/blob/master/license.md  MIT License
+     * @license    https://github.com/aalfiann/reSlim-modules-enterprise/blob/master/LICENSE.md  MIT License
      */
 	class Util {
 
