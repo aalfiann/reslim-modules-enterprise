@@ -25,6 +25,9 @@ use PDO;                                            //To connect with database
 
         //master var
 		var $username,$token;
+
+		//multi language
+		var $lang;
         
         //construct database object
         function __construct($db=null) {
@@ -54,13 +57,13 @@ use PDO;                                            //To connect with database
 							$data = [
 								'status' => 'success',
 								'code' => 'RS101',
-								'message' => CustomHandlers::getreSlimMessage('RS101')
+								'message' => CustomHandlers::getreSlimMessage('RS101',$this->lang)
 							];	
 						} else {
 							$data = [
 								'status' => 'error',
 								'code' => 'RS201',
-								'message' => CustomHandlers::getreSlimMessage('RS201')
+								'message' => CustomHandlers::getreSlimMessage('RS201',$this->lang)
 							];
 						}
 						$this->db->commit();
@@ -76,14 +79,14 @@ use PDO;                                            //To connect with database
 					$data = [
 						'status' => 'error',
 						'code' => 'RS404',
-						'message' => CustomHandlers::getreSlimMessage('RS404')
+						'message' => CustomHandlers::getreSlimMessage('RS404',$this->lang)
 					];
 				}
             } else {
                 $data = [
 	    			'status' => 'error',
 					'code' => 'RS401',
-        	    	'message' => CustomHandlers::getreSlimMessage('RS401')
+        	    	'message' => CustomHandlers::getreSlimMessage('RS401',$this->lang)
 				];
             }
 
@@ -106,13 +109,13 @@ use PDO;                                            //To connect with database
 							$data = [
 								'status' => 'success',
 								'code' => 'RS104',
-								'message' => CustomHandlers::getreSlimMessage('RS104')
+								'message' => CustomHandlers::getreSlimMessage('RS104',$this->lang)
 							];	
 						} else {
 							$data = [
 								'status' => 'error',
 								'code' => 'RS204',
-								'message' => CustomHandlers::getreSlimMessage('RS204')
+								'message' => CustomHandlers::getreSlimMessage('RS204',$this->lang)
 							];
 						}
 						$this->db->commit();
@@ -128,14 +131,14 @@ use PDO;                                            //To connect with database
 					$data = [
 						'status' => 'error',
 						'code' => 'RS404',
-						'message' => CustomHandlers::getreSlimMessage('RS404')
+						'message' => CustomHandlers::getreSlimMessage('RS404',$this->lang)
 					];
 				}
             } else {
                 $data = [
 	    			'status' => 'error',
 					'code' => 'RS401',
-        	    	'message' => CustomHandlers::getreSlimMessage('RS401')
+        	    	'message' => CustomHandlers::getreSlimMessage('RS401',$this->lang)
 				];
             }
 

@@ -3,13 +3,13 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \classes\middleware\ValidateParam as ValidateParam;
 use \classes\middleware\ValidateParamURL as ValidateParamURL;
-use \classes\SimpleCache as SimpleCache;
 use \modules\enterprise\User as User;
 use \modules\enterprise\Util as Util;
 
     // POST api to create new company
     $app->post('/enterprise/user/data/new', function (Request $request, Response $response) {
         $user = new User($this->db);
+        $user->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $datapost = $request->getParsedBody();
         $user->adminname = $datapost['Adminname'];
         $user->token = $datapost['Token'];
@@ -25,6 +25,7 @@ use \modules\enterprise\Util as Util;
     // POST api to update user
     $app->post('/enterprise/user/data/update', function (Request $request, Response $response) {
         $user = new User($this->db);
+        $user->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $datapost = $request->getParsedBody();    
         $user->adminname = $datapost['Adminname'];
         $user->token = $datapost['Token'];
@@ -42,6 +43,7 @@ use \modules\enterprise\Util as Util;
     // POST api to delete user
     $app->post('/enterprise/user/data/delete', function (Request $request, Response $response) {
         $user = new User($this->db);
+        $user->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $datapost = $request->getParsedBody();    
         $user->adminname = $datapost['Adminname'];
         $user->token = $datapost['Token'];
@@ -55,6 +57,7 @@ use \modules\enterprise\Util as Util;
     // GET api to show all data user pagination registered user
     $app->get('/enterprise/user/data/search/{username}/{token}/{page}/{itemsperpage}/', function (Request $request, Response $response) {
         $user = new User($this->db);
+        $user->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $user->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
         $user->username = $request->getAttribute('username');
         $user->token = $request->getAttribute('token');
@@ -68,11 +71,12 @@ use \modules\enterprise\Util as Util;
     // GET api to get verify user is registered
     $app->get('/enterprise/user/data/verify/register/{username}', function (Request $request, Response $response) {
         $username = $request->getAttribute('username');
+        $lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $body = $response->getBody();
         if (Util::isUserRegistered($this->db,$username)){
-            $body->write('{"status":"success","code":"RS501","result": {"Username": "'.$username.'","Registered":true},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501').'"}');
+            $body->write('{"status":"success","code":"RS501","result": {"Username": "'.$username.'","Registered":true},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501',$lang).'"}');
         } else {
-            $body->write('{"status":"error","code":"RS601","result": {"Username": "'.$username.'","Registered":false},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601').'"}');
+            $body->write('{"status":"error","code":"RS601","result": {"Username": "'.$username.'","Registered":false},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601',$lang).'"}');
         }
         return classes\Cors::modify($response,$body,200);
     });
@@ -80,11 +84,12 @@ use \modules\enterprise\Util as Util;
     // GET api to get verify user is exists
     $app->get('/enterprise/user/data/verify/exists/{username}', function (Request $request, Response $response) {
         $username = $request->getAttribute('username');
+        $lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $body = $response->getBody();
         if (Util::isMainUserExist($this->db,$username)){
-            $body->write('{"status":"success","code":"RS501","result": {"Username": "'.$username.'","Exists":true},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501').'"}');
+            $body->write('{"status":"success","code":"RS501","result": {"Username": "'.$username.'","Exists":true},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501',$lang).'"}');
         } else {
-            $body->write('{"status":"error","code":"RS601","result": {"Username": "'.$username.'","Exists":false},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601').'"}');
+            $body->write('{"status":"error","code":"RS601","result": {"Username": "'.$username.'","Exists":false},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601',$lang).'"}');
         }
         return classes\Cors::modify($response,$body,200);
     });
@@ -92,12 +97,13 @@ use \modules\enterprise\Util as Util;
     // GET api to get data branchid user
     $app->get('/enterprise/user/data/branch/{username}', function (Request $request, Response $response) {
         $username = strtolower($request->getAttribute('username'));
+        $lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $branch = Util::getUserBranchID($this->db,$username);
         $body = $response->getBody();
         if (!empty($branch)){
-            $body->write('{"status":"success","code":"RS501","result": {"Username": "'.$username.'","BranchID": "'.$branch.'"},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501').'"}');
+            $body->write('{"status":"success","code":"RS501","result": {"Username": "'.$username.'","BranchID": "'.$branch.'"},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501',$lang).'"}');
         } else {
-            $body->write('{"status":"error","code":"RS601","result": {"Username": "'.$username.'","BranchID": "'.$branch.'"},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601').'"}');
+            $body->write('{"status":"error","code":"RS601","result": {"Username": "'.$username.'","BranchID": "'.$branch.'"},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601',$lang).'"}');
         }
         
         return classes\Cors::modify($response,$body,200);
@@ -106,6 +112,7 @@ use \modules\enterprise\Util as Util;
     // GET api to show all data status user
     $app->get('/enterprise/user/data/status/{token}', function (Request $request, Response $response) {
         $user = new User($this->db);
+        $user->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $user->token = $request->getAttribute('token');
         $body = $response->getBody();
         $body->write($user->showOptionStatus());
@@ -115,6 +122,7 @@ use \modules\enterprise\Util as Util;
     // GET api to get all data user for statistic purpose
     $app->get('/enterprise/user/stats/data/summary/{username}/{token}', function (Request $request, Response $response) {
         $user = new User($this->db);
+        $user->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $user->token = $request->getAttribute('token');
         $user->username = $request->getAttribute('username');
         $body = $response->getBody();

@@ -10,6 +10,7 @@ use \modules\enterprise\Company as Company;
     // POST api to create new company
     $app->post('/enterprise/company/data/new', function (Request $request, Response $response) {
         $company = new Company($this->db);
+        $company->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $datapost = $request->getParsedBody();
         $company->username = $datapost['Username'];
         $company->token = $datapost['Token'];
@@ -37,6 +38,7 @@ use \modules\enterprise\Company as Company;
     // POST api to update company
     $app->post('/enterprise/company/data/update', function (Request $request, Response $response) {
         $company = new Company($this->db);
+        $company->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $datapost = $request->getParsedBody();    
         $company->username = $datapost['Username'];
         $company->token = $datapost['Token'];
@@ -66,6 +68,7 @@ use \modules\enterprise\Company as Company;
     // POST api to delete company
     $app->post('/enterprise/company/data/delete', function (Request $request, Response $response) {
         $company = new Company($this->db);
+        $company->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $datapost = $request->getParsedBody();    
         $company->branchid = $datapost['BranchID'];
         $company->username = $datapost['Username'];
@@ -78,6 +81,7 @@ use \modules\enterprise\Company as Company;
     // GET api to show all data company pagination registered user
     $app->get('/enterprise/company/data/search/{username}/{token}/{page}/{itemsperpage}/', function (Request $request, Response $response) {
         $company = new Company($this->db);
+        $company->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $company->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
         $company->username = $request->getAttribute('username');
         $company->token = $request->getAttribute('token');
@@ -91,6 +95,7 @@ use \modules\enterprise\Company as Company;
     // GET api to show all data company
     $app->get('/enterprise/company/data/company/{username}/{token}', function (Request $request, Response $response) {
         $company = new Company($this->db);
+        $company->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $company->username = $request->getAttribute('username');
         $company->token = $request->getAttribute('token');
         $body = $response->getBody();
@@ -101,6 +106,7 @@ use \modules\enterprise\Company as Company;
     // GET api to show all data status company
     $app->get('/enterprise/company/data/status/{token}', function (Request $request, Response $response) {
         $company = new Company($this->db);
+        $company->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $company->token = $request->getAttribute('token');
         $body = $response->getBody();
         $body->write($company->showOptionStatus());
@@ -110,24 +116,27 @@ use \modules\enterprise\Company as Company;
     // GET api to show all data company pagination public
     $app->map(['GET','OPTIONS'],'/enterprise/company/data/public/search/{page}/{itemsperpage}/', function (Request $request, Response $response) {
         $company = new Company($this->db);
+        $company->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $company->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
         $company->page = $request->getAttribute('page');
         $company->itemsPerPage = $request->getAttribute('itemsperpage');
         $body = $response->getBody();
         $response = $this->cache->withEtag($response, $this->etag2hour.'-'.trim($_SERVER['REQUEST_URI'],'/'));
-        if (SimpleCache::isCached(3600,["apikey","query"])){
-            $datajson = SimpleCache::load(["apikey","query"]);
+        if (SimpleCache::isCached(3600,["apikey","query","lang"])){
+            $datajson = SimpleCache::load(["apikey","query","lang"]);
         } else {
-            $datajson = SimpleCache::save($company->searchCompanyAsPaginationPublic(),["apikey","query"]);
+            $datajson = SimpleCache::save($company->searchCompanyAsPaginationPublic(),["apikey","query","lang"]);
         }
         $body->write($datajson);
         return classes\Cors::modify($response,$body,200,$request);
-    })->add(new ValidateParamURL('query'))
+    })->add(new ValidateParamURL('lang','0-2'))
+        ->add(new ValidateParamURL('query'))
         ->add(new ApiKey);
 
     // GET api to get all data page for statistic purpose
     $app->get('/enterprise/company/stats/data/summary/{username}/{token}', function (Request $request, Response $response) {
         $company = new Company($this->db);
+        $company->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $company->token = $request->getAttribute('token');
         $company->username = $request->getAttribute('username');
         $body = $response->getBody();

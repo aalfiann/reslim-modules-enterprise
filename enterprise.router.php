@@ -23,6 +23,7 @@ use \classes\middleware\ApiKey as ApiKey;                       //ApiKey Middlew
     // Installation 
     $app->get('/enterprise/install/{username}/{token}', function (Request $request, Response $response) {
         $enterprise = new Enterprise($this->db);
+        $enterprise->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $enterprise->username = $request->getAttribute('username');
         $enterprise->token = $request->getAttribute('token');
         $body = $response->getBody();
@@ -33,6 +34,7 @@ use \classes\middleware\ApiKey as ApiKey;                       //ApiKey Middlew
     // Uninstall (This will clear all data) 
     $app->get('/enterprise/uninstall/{username}/{token}', function (Request $request, Response $response) {
         $enterprise = new Enterprise($this->db);
+        $enterprise->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
         $enterprise->username = $request->getAttribute('username');
         $enterprise->token = $request->getAttribute('token');
         $body = $response->getBody();
