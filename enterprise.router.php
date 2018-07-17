@@ -11,12 +11,12 @@ use \classes\middleware\ApiKey as ApiKey;                       //ApiKey Middlew
 
 
     // Get module information (include cache and for public user)
-    $app->get('/enterprise/get/info/', function (Request $request, Response $response) {
+    $app->map(['GET','OPTIONS'],'/enterprise/get/info/', function (Request $request, Response $response) {
         $enterprise = new Enterprise($this->db);
         $body = $response->getBody();
         $response = $this->cache->withEtag($response, $this->etag2hour.'-'.trim($_SERVER['REQUEST_URI'],'/'));
         $body->write($enterprise->viewInfo());
-        return classes\Cors::modify($response,$body,200);
+        return classes\Cors::modify($response,$body,200,$request);
     })->add(new ApiKey);
 
     
