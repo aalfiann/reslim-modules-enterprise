@@ -1,0 +1,758 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Enterprise",
+		"_postman_id": "e8fcdb76-b3fd-1504-88a4-9f46620d3075",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Install Enterprise Database",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/install/{yourusername}/{yourtoken}",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Install Enterprise Database\n---\nThis will install Enterprise Database.\n\nNote:\n- Only user with role Superuser who can install.\n- Your exist database will be replaced if you ever install this before."
+			},
+			"response": []
+		},
+		{
+			"name": "Uninstall Enterprise Database",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/uninstall/{yourusername}/{yourtoken}",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Uninstall Enterprise Database\n---\nThis will remove Enterprise Database.\n\nNote:\n- Only user with role Superuser who can uninstall.\n- Your exist enterprise database will be removed clean."
+			},
+			"response": []
+		},
+		{
+			"name": "Company Add New",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/company/data/new",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "{username}",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "{yourtoken}",
+							"description": "Length is 1-250 {required}",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "{branchid}",
+							"description": "Length is 1-10 {required}",
+							"type": "text"
+						},
+						{
+							"key": "Name",
+							"value": "",
+							"description": "Length is 1-50 {required}",
+							"type": "text"
+						},
+						{
+							"key": "Address",
+							"value": "",
+							"description": "Length is 0-250",
+							"type": "text"
+						},
+						{
+							"key": "Phone",
+							"value": "",
+							"description": "Length is 1-15 {numeric,required}",
+							"type": "text"
+						},
+						{
+							"key": "Fax",
+							"value": "",
+							"description": "Length is 0-15 {numeric}",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "",
+							"description": "Length is 0-50 {email}",
+							"type": "text"
+						},
+						{
+							"key": "Owner",
+							"value": "",
+							"description": "Length is 0-50",
+							"type": "text"
+						},
+						{
+							"key": "PIC",
+							"value": "",
+							"description": "Length is 0-50",
+							"type": "text"
+						},
+						{
+							"key": "TIN",
+							"value": "",
+							"description": "Length is 0-50",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Company Add New\n---\nThis is to Add new data Company.\n\nNote:\n- Only user with role Superuser and Admin can add new data company"
+			},
+			"response": []
+		},
+		{
+			"name": "Company Update",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/company/data/update",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "{username}",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "{yourtoken}",
+							"description": "Length is 1-250 {required}",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "",
+							"description": "Length is 1-10 {required}",
+							"type": "text"
+						},
+						{
+							"key": "Name",
+							"value": "",
+							"description": "Length is 1-50 {required}",
+							"type": "text"
+						},
+						{
+							"key": "Address",
+							"value": "",
+							"description": "Length is 0-250",
+							"type": "text"
+						},
+						{
+							"key": "Phone",
+							"value": "",
+							"description": "Length is 1-15 {numeric,required}",
+							"type": "text"
+						},
+						{
+							"key": "Fax",
+							"value": "",
+							"description": "Length is 0-15 {numeric}",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "",
+							"description": "Length is 0-50 {email}",
+							"type": "text"
+						},
+						{
+							"key": "Owner",
+							"value": "",
+							"description": "Length is 0-50",
+							"type": "text"
+						},
+						{
+							"key": "PIC",
+							"value": "",
+							"description": "Length is 0-50",
+							"type": "text"
+						},
+						{
+							"key": "TIN",
+							"value": "",
+							"description": "Length is 0-50",
+							"type": "text"
+						},
+						{
+							"key": "StatusID",
+							"value": "{1 or 42}",
+							"description": "Length is 1-11 {numeric,required}",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Company Update New\n---\nThis is to Update new data Company.\n\nNote:\n- Only user with role Superuser and Admin can update the data company"
+			},
+			"response": []
+		},
+		{
+			"name": "Company Delete",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/company/data/delete",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "{username}",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "{yourtoken}",
+							"description": "Length is 1-250 {required}",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "{branchid}",
+							"description": "Length is 1-10 {required}",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Company Delete\n---\nThis is to Delete the data Company.\n\nNote:\n- Only user with role Superuser can delete the data company"
+			},
+			"response": []
+		},
+		{
+			"name": "Search Company As Pagination",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim/src/api/system/company/data/search/{username}/{yourtoken}/{page}/{itemsperpage}/?query={query to search data}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim",
+						"src",
+						"api",
+						"system",
+						"company",
+						"data",
+						"search",
+						"{username}",
+						"{yourtoken}",
+						"{page}",
+						"{itemsperpage}",
+						""
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "{query to search data}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "reslim",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "cgu",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Search Company As Pagination\n---\nThis will show all data company with pagination.\n\nNote:\n- All role can see this data company."
+			},
+			"response": []
+		},
+		{
+			"name": "Search Company As Pagination Public",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim/src/api/system/company/data/public/search/{page}/{itemperpage}/?apikey={yourapikey}&query={query to search data}&lang=en",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim",
+						"src",
+						"api",
+						"system",
+						"company",
+						"data",
+						"public",
+						"search",
+						"{page}",
+						"{itemperpage}",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikey}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "query",
+							"value": "{query to search data}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "lang",
+							"value": "en",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "reslim",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "cgu",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Search Company As Pagination Public\n---\nThis will show all data company with pagination for public access with api key.\n\nNote:\n- Only company with status active."
+			},
+			"response": []
+		},
+		{
+			"name": "Show Option Company",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/company/data/company/{username}/{yourtoken}",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "reslim",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "cgu",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Show Option Company\n---\nTo get data list name of company.\n\nNote:\n- This commonly use for choosing the company name for registering new user or change the company of user to other company.\n- User with role Superuser and Admin will show all company name list."
+			},
+			"response": []
+		},
+		{
+			"name": "Show Option Status",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/company/data/status/{yourtoken}",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "reslim",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "cgu",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Show Option Status\n---\nTo get data list status to be use for manage the data company."
+			},
+			"response": []
+		},
+		{
+			"name": "Stat Company Summary",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/company/stats/data/summary/{username}/{yourtoken}",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "reslim",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "cgu",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Stat Company Summary\n---\nThis is to show summary of the Data Company."
+			},
+			"response": []
+		},
+		{
+			"name": "Enterprise User Add New",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/data/new",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Adminname",
+							"value": "{yourusername}",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "{yourtoken}",
+							"description": "Length is 1-250 {required}",
+							"type": "text"
+						},
+						{
+							"key": "Username",
+							"value": "{username other user}",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "{branchid}",
+							"description": "Length is 1-10 {required}",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Enterprise User Add New\n---\nThis will register the main user to the branch company."
+			},
+			"response": []
+		},
+		{
+			"name": "Enterprise User Update",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/data/update",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Adminname",
+							"value": "{yourusername}",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "{yourtoken}",
+							"description": "Length is 1-250 {required}",
+							"type": "text"
+						},
+						{
+							"key": "Username",
+							"value": "{username other user}",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "{branchid}",
+							"description": "Length is 1-10 {required}",
+							"type": "text"
+						},
+						{
+							"key": "StatusID",
+							"value": "{1 or 42}",
+							"description": "Length is 1-11 {numeric,required}",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Enterprise User Update\n---\nThis will update the user which is already registered in branch company.\n\nNote:\n- Only user with role Superuser, Admin and Master can update the user."
+			},
+			"response": []
+		},
+		{
+			"name": "Enterprise User Delete",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/data/delete",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Adminname",
+							"value": "{yourusername}",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "{yourtoken}",
+							"description": "Length is 1-250 {required}",
+							"type": "text"
+						},
+						{
+							"key": "Username",
+							"value": "{username other user}",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Enterprise User Delete\n---\nThis will delete the user which is already registered in branch company.\n\nNote:\n- Only user with role Superuser who can delete the user\n- Deleted user still can login or access the main reslim app."
+			},
+			"response": []
+		},
+		{
+			"name": "Search Enterprise User As Pagination",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim/src/api/system/user/data/search/{username}/{yourtoken}/{page}/{itemsperpage}/?query={query to search data}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim",
+						"src",
+						"api",
+						"system",
+						"user",
+						"data",
+						"search",
+						"{username}",
+						"{yourtoken}",
+						"{page}",
+						"{itemsperpage}",
+						""
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "{query to search data}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "reslim",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "cgu",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Search Enterprise User As Pagination\n---\nThis will show all data user which is already registered in branch company with pagination.\n\nNote:\n- Only user with role Superuser and Admin can see all data user from all branch company. The else is only show data user in same branch company."
+			},
+			"response": []
+		},
+		{
+			"name": "Show Option User Status",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/data/status/{yourtoken}",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "reslim",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "cgu",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Show Option User Status\n---\nTo get data list status to be use for manage the enterprise user."
+			},
+			"response": []
+		},
+		{
+			"name": "Stat Enterprise User Summary",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/stats/data/summary/{username}/{yourtoken}",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "reslim",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "BranchID",
+							"value": "cgu",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Stat Enterprise User Summary\n---\nThis is to show summary of the Data Enterprise User."
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Data Branch",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/data/branch/{username}",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Get User Data Branch\n---\nThis will get the data branch id of user."
+			},
+			"response": []
+		},
+		{
+			"name": "Verify User Exists",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/data/verify/exists/{username}",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Verify User Exists\n---\nThis will verify if user exist in the main app.\n\nNote:\n- This commonly use for verify the username before registering to branch company."
+			},
+			"response": []
+		},
+		{
+			"name": "Verify User Registered",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/data/verify/register/{username}",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Verify User Registered\n---\nThis will verify if user already registered in branch company or not."
+			},
+			"response": []
+		}
+	]
+}
