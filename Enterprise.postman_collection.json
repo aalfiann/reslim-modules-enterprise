@@ -3,7 +3,7 @@
 	"info": {
 		"name": "Enterprise",
 		"_postman_id": "e8fcdb76-b3fd-1504-88a4-9f46620d3075",
-		"description": "",
+		"description": "API Dcoumentation about Enterprise Module.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
