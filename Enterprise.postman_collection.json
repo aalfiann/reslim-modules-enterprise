@@ -8,6 +8,42 @@
 	},
 	"item": [
 		{
+			"name": "Get Info Module",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim/src/api/enterprise/get/info/?apikey={yourapikey}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim",
+						"src",
+						"api",
+						"enterprise",
+						"get",
+						"info",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikey}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get Info Module\n---\nGet info detail about Enterprise Module."
+			},
+			"response": []
+		},
+		{
 			"name": "Install Enterprise Database",
 			"request": {
 				"url": "http://localhost:1337/reSlim/src/api/enterprise/install/{yourusername}/{yourtoken}",
