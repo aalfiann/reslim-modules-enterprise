@@ -125,7 +125,7 @@ use \modules\enterprise\Company as Company;
         if (SimpleCache::isCached(3600,["apikey","query","lang"])){
             $datajson = SimpleCache::load(["apikey","query","lang"]);
         } else {
-            $datajson = SimpleCache::save($company->searchCompanyAsPaginationPublic(),["apikey","query","lang"]);
+            $datajson = SimpleCache::save($company->searchCompanyAsPaginationPublic(),["apikey","query","lang"],null,3600);
         }
         $body->write($datajson);
         return classes\Cors::modify($response,$body,200,$request);

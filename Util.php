@@ -37,7 +37,7 @@ use PDO;
 		    	if ($stmt->execute()) {	
                 	if ($stmt->rowCount() > 0){
                         $r = true;
-                        Auth::writeCache('user-'.$newusername.'-registered');
+                        Auth::writeCache('user-'.$newusername.'-registered',null,86400);
         	        }          	   	
 	    		}
             } 		
@@ -66,7 +66,7 @@ use PDO;
 		    	if ($stmt->execute()) {	
                 	if ($stmt->rowCount() > 0){
                         $r = true;
-                        Auth::writeCache('user-'.$newusername.'-active');
+                        Auth::writeCache('user-'.$newusername.'-active',null,86400);
         	        }          	   	
 	    		}
             } 		
@@ -95,7 +95,7 @@ use PDO;
 		    	if ($stmt->execute()) {	
                 	if ($stmt->rowCount() > 0){
                         $r = true;
-                        Auth::writeCache('user-'.$newusername.'-exists');
+                        Auth::writeCache('user-'.$newusername.'-exists',null,86400);
         	        }          	   	
 	    		}
             }	 		
@@ -126,7 +126,7 @@ use PDO;
 				    if ($stmt->rowCount() > 0){
     					$single = $stmt->fetch();
                         $roles = $single['BranchID'];
-                        Auth::writeCache('user-'.$newusername.'-branchid',$roles);
+                        Auth::writeCache('user-'.$newusername.'-branchid',$roles,86400);
 		    		}
 			    }
             }
