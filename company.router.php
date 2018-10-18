@@ -115,16 +115,16 @@ use \modules\enterprise\Company as Company;
 
     // GET api to show all data company pagination public
     $app->map(['GET','OPTIONS'],'/enterprise/company/data/public/search/{page}/{itemsperpage}/', function (Request $request, Response $response) {
-        $company = new Company($this->db);
-        $company->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
-        $company->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
-        $company->page = $request->getAttribute('page');
-        $company->itemsPerPage = $request->getAttribute('itemsperpage');
         $body = $response->getBody();
         $response = $this->cache->withEtag($response, $this->etag2hour.'-'.trim($_SERVER['REQUEST_URI'],'/'));
         if (SimpleCache::isCached(3600,["apikey","query","lang"])){
             $datajson = SimpleCache::load(["apikey","query","lang"]);
         } else {
+            $company = new Company($this->db);
+            $company->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
+            $company->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
+            $company->page = $request->getAttribute('page');
+            $company->itemsPerPage = $request->getAttribute('itemsperpage');
             $datajson = SimpleCache::save($company->searchCompanyAsPaginationPublic(),["apikey","query","lang"],null,3600);
         }
         $body->write($datajson);
