@@ -302,29 +302,7 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "reslim",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "BranchID",
-							"value": "cgu",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
+				"body": {},
 				"description": "Search Company As Pagination\n---\nThis will show all data company with pagination.\n\nNote:\n- All role can see this data company."
 			},
 			"response": []
@@ -376,29 +354,7 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "reslim",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "BranchID",
-							"value": "cgu",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
+				"body": {},
 				"description": "Search Company As Pagination Public\n---\nThis will show all data company with pagination for public access with api key.\n\nNote:\n- Only company with status active."
 			},
 			"response": []
@@ -420,29 +376,7 @@
 				"url": "http://localhost:1337/reSlim/src/api/enterprise/company/data/company/{username}/{yourtoken}",
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "reslim",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "BranchID",
-							"value": "cgu",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
+				"body": {},
 				"description": "Show Option Company\n---\nTo get data list name of company.\n\nNote:\n- This commonly use for choosing the company name for registering new user or change the company of user to other company.\n- User with role Superuser and Admin will show all company name list."
 			},
 			"response": []
@@ -453,29 +387,7 @@
 				"url": "http://localhost:1337/reSlim/src/api/enterprise/company/data/status/{yourtoken}",
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "reslim",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "BranchID",
-							"value": "cgu",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
+				"body": {},
 				"description": "Show Option Status\n---\nTo get data list status to be use for manage the data company."
 			},
 			"response": []
@@ -486,29 +398,7 @@
 				"url": "http://localhost:1337/reSlim/src/api/enterprise/company/stats/data/summary/{username}/{yourtoken}",
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "reslim",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "BranchID",
-							"value": "cgu",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
+				"body": {},
 				"description": "Stat Company Summary\n---\nThis is to show summary of the Data Company."
 			},
 			"response": []
@@ -666,29 +556,7 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "reslim",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "BranchID",
-							"value": "cgu",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
+				"body": {},
 				"description": "Search Enterprise User As Pagination\n---\nThis will show all data user which is already registered in branch company with pagination.\n\nNote:\n- Only user with role Superuser and Admin can see all data user from all branch company. The else is only show data user in same branch company."
 			},
 			"response": []
@@ -699,29 +567,7 @@
 				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/data/status/{yourtoken}",
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "reslim",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "BranchID",
-							"value": "cgu",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
+				"body": {},
 				"description": "Show Option User Status\n---\nTo get data list status to be use for manage the enterprise user."
 			},
 			"response": []
@@ -732,29 +578,7 @@
 				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/stats/data/summary/{username}/{yourtoken}",
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "reslim",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "1oSPIt0BUgDy7owQMPOjXrlqBdKd8AU0Pqk6g",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "BranchID",
-							"value": "cgu",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
+				"body": {},
 				"description": "Stat Enterprise User Summary\n---\nThis is to show summary of the Data Enterprise User."
 			},
 			"response": []
@@ -765,10 +589,7 @@
 				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/data/branch/{username}",
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"description": "Get User Data Branch\n---\nThis will get the data branch id of user."
 			},
 			"response": []
@@ -779,10 +600,7 @@
 				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/data/verify/exists/{username}",
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"description": "Verify User Exists\n---\nThis will verify if user exist in the main app.\n\nNote:\n- This commonly use for verify the username before registering to branch company."
 			},
 			"response": []
@@ -793,10 +611,7 @@
 				"url": "http://localhost:1337/reSlim/src/api/enterprise/user/data/verify/register/{username}",
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"description": "Verify User Registered\n---\nThis will verify if user already registered in branch company or not."
 			},
 			"response": []
