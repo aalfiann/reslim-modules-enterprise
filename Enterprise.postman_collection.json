@@ -229,7 +229,7 @@
 						}
 					]
 				},
-				"description": "Company Update New\n---\nThis is to Update new data Company.\n\nNote:\n- Only user with role Superuser and Admin can update the data company"
+				"description": "Company Update\n---\nThis is to Update data Company.\n\nNote:\n- Only user with role Superuser and Admin can update the data company"
 			},
 			"response": []
 		},
@@ -400,6 +400,17 @@
 					]
 				},
 				"description": "Search Company As Pagination Public\n---\nThis will show all data company with pagination for public access with api key.\n\nNote:\n- Only company with status active."
+			},
+			"response": []
+		},
+		{
+			"name": "Show Data Company Detail",
+			"request": {
+				"url": "http://localhost:1337/reSlim/src/api/enterprise/company/data/company/detail/{yourusername}/{yourtoken}/{branchid}",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Show Data Company Detail\r\n---\r\nThis will show data company for detail\r\n  \r\nNote:\r\n- All role can see this data company"
 			},
 			"response": []
 		},

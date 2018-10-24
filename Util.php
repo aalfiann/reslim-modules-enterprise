@@ -133,4 +133,61 @@ use PDO;
 			return $roles;
 			$db = null;
         }
+
+        /** 
+         * Get information detail branch id
+         * Note: 
+         *  - We use auth cache because for backward compatible with old version
+         *
+         * @param $db : Dabatase connection (PDO)
+         * @param $branchid : input the branch id
+         * @return json
+         */
+        public static function getDetailBranchID($db,$branchid){
+            $roles = "";
+            $newbranchid = strtolower($branchid);
+            $key = 'detail-'.$newbranchid.'-branchid';
+            if (Auth::isKeyCached($key,86400)){
+                $data = json_decode(Auth::loadCache($key));
+                if (!empty($data)){
+                    $roles = $data->Role;
+                }
+            } else {
+                $sql = "SELECT a.Created_at,a.BranchID,a.Name,a.Address,a.Phone,a.Fax,a.Email,a.TIN,a.Owner,a.PIC,a.StatusID,b.`Status`,a.Username,a.Updated_at,a.Updated_by 
+                    from sys_company a
+                    inner join core_status b on a.StatusID=b.StatusID
+                    where a.BranchID = :branchid limit 1;";
+	    		$stmt = $db->prepare($sql);
+		    	$stmt->bindParam(':branchid', $newbranchid, PDO::PARAM_STR);
+			    if ($stmt->execute()){
+				    if ($stmt->rowCount() > 0){
+    					$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+						$data = [
+							'result' => $result, 
+							'status' => 'success', 
+							'code' => 'RS501',
+							'message' => CustomHandlers::getreSlimMessage('RS501')
+                        ];
+                        $roles = json_encode($data);
+                        Auth::writeCache($key,addcslashes($roles,"\"'\n"),86400);
+		    		} else {
+						$data = [
+							'status' => 'error',
+							'code' => 'RS601',
+							'message' => CustomHandlers::getreSlimMessage('RS601')
+                        ];
+                        $roles = json_encode($data);
+					} 
+			    } else {
+					$data = [
+						'status' => 'error',
+						'code' => 'RS202',
+						'message' => CustomHandlers::getreSlimMessage('RS202')
+                    ];
+                    $roles = json_encode($data);
+				}
+            }
+			return $roles;
+			$db = null;
+        }
     }

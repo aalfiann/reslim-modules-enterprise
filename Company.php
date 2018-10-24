@@ -192,7 +192,8 @@ use PDO;
                             'status' => 'success',
                             'code' => 'RS103',
                             'message' => CustomHandlers::getreSlimMessage('RS103',$this->lang)
-                        ];
+						];
+						Auth::deleteCache('detail-'.$newbranchid.'-branchid');
                     } catch (PDOException $e){
                         $data = [
                             'status' => 'error',
@@ -242,7 +243,8 @@ use PDO;
 	    						'status' => 'success',
 		    					'code' => 'RS104',
 			    				'message' => CustomHandlers::getreSlimMessage('RS104',$this->lang)
-				    		];	
+							];
+							Auth::deleteCache('detail-'.$newbranchid.'-branchid');
 					    } else {
     						$data = [
 	    						'status' => 'error',
@@ -433,6 +435,55 @@ use PDO;
         			'status' => 'error',
 					'code' => 'RS202',
 	        		'message' => CustomHandlers::getreSlimMessage('RS202',$this->lang)
+				];
+			}		
+        
+			return JSON::safeEncode($data,true);
+	        $this->db= null;
+		}
+
+		/** 
+		 * Show data detail company
+		 * @return result process in json encoded data
+		 */
+		public function showCompanyDetail() {
+			if (Auth::validToken($this->db,$this->token)){
+				$sql = "SELECT a.Created_at,a.BranchID,a.Name,a.Address,a.Phone,a.Fax,a.Email,a.TIN,a.Owner,a.PIC,a.StatusID,b.`Status`,a.Username,a.Updated_at,a.Updated_by 
+					from sys_company a
+					inner join core_status b on a.StatusID=b.StatusID
+					where a.BranchID = :branchid limit 1;";
+				$stmt = $this->db->prepare($sql);		
+				$stmt->bindParam(':branchid', $this->branchid, PDO::PARAM_STR);
+				
+				if ($stmt->execute()) {	
+					if ($stmt->rowCount() > 0){
+						$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+						$data = [
+							'result' => $result, 
+							'status' => 'success', 
+							'code' => 'RS501',
+							'message' => CustomHandlers::getreSlimMessage('RS501',$this->lang)
+						];
+					} else {
+						$data = [
+							'status' => 'error',
+							'code' => 'RS601',
+							'message' => CustomHandlers::getreSlimMessage('RS601',$this->lang)
+						];
+					}          	   	
+				} else {
+					$data = [
+						'status' => 'error',
+						'code' => 'RS202',
+						'message' => CustomHandlers::getreSlimMessage('RS202',$this->lang)
+					];
+				}
+				
+			} else {
+				$data = [
+	    			'status' => 'error',
+					'code' => 'RS401',
+        	    	'message' => CustomHandlers::getreSlimMessage('RS401',$this->lang)
 				];
 			}		
         

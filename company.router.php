@@ -92,6 +92,18 @@ use \modules\enterprise\Company as Company;
         return classes\Cors::modify($response,$body,200);
     })->add(new ValidateParamURL('query'));
 
+    // GET api to show data detail company
+    $app->get('/enterprise/company/data/company/detail/{username}/{token}/{branchid}', function (Request $request, Response $response) {
+        $company = new Company($this->db);
+        $company->lang = (empty($_GET['lang'])?$this->settings['language']:$_GET['lang']);
+        $company->username = $request->getAttribute('username');
+        $company->token = $request->getAttribute('token');
+        $company->branchid = $request->getAttribute('branchid');
+        $body = $response->getBody();
+        $body->write($company->showCompanyDetail());
+        return classes\Cors::modify($response,$body,200);
+    });
+
     // GET api to show all data company
     $app->get('/enterprise/company/data/company/{username}/{token}', function (Request $request, Response $response) {
         $company = new Company($this->db);
