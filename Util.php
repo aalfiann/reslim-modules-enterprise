@@ -141,7 +141,7 @@ use PDO;
          *
          * @param $db : Dabatase connection (PDO)
          * @param $branchid : input the branch id
-         * @return json
+         * @return array
          */
         public static function getDetailBranchID($db,$branchid){
             $roles = "";
@@ -151,6 +151,23 @@ use PDO;
                 $data = json_decode(Auth::loadCache($key));
                 if (!empty($data)){
                     $roles = $data->Role;
+                    //Sanitize hidden control chars
+                    for ($i = 0; $i <= 9; ++$i) { 
+                        $roles = str_replace(chr($i), "", $roles); 
+                    }
+                    for ($i = 11; $i <= 12; ++$i) { 
+                        $roles = str_replace(chr($i), "", $roles); 
+                    }
+                    for ($i = 14; $i <= 31; ++$i) { 
+                        $roles = str_replace(chr($i), "", $roles); 
+                    }
+                    $roles = str_replace(chr(127), "", $roles);
+                    //Handle Byte Order Mark (BOM)
+                    if (0 === strpos(bin2hex($roles), 'efbbbf')) {
+                        $roles = substr($roles, 3);
+                    }
+                    //Handle newline char
+                    $roles = preg_replace("/[\r\n]+/", "\\n", $roles);
                 }
             } else {
                 $sql = "SELECT a.Created_at,a.BranchID,a.Name,a.Address,a.Phone,a.Fax,a.Email,a.TIN,a.Owner,a.PIC,a.StatusID,b.`Status`,a.Username,a.Updated_at,a.Updated_by 
@@ -163,31 +180,26 @@ use PDO;
 				    if ($stmt->rowCount() > 0){
     					$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 						$data = [
-							'result' => $result, 
-							'status' => 'success', 
-							'code' => 'RS501',
-							'message' => CustomHandlers::getreSlimMessage('RS501')
+							'result' => $result,
+							'status' => 'success',
+							'code' => 'RS501'
                         ];
                         $roles = json_encode($data);
                         Auth::writeCache($key,addcslashes($roles,"\"'\n"),86400);
 		    		} else {
-						$data = [
+						return [
 							'status' => 'error',
-							'code' => 'RS601',
-							'message' => CustomHandlers::getreSlimMessage('RS601')
+							'code' => 'RS601'
                         ];
-                        $roles = json_encode($data);
 					} 
 			    } else {
-					$data = [
+					return [
 						'status' => 'error',
-						'code' => 'RS202',
-						'message' => CustomHandlers::getreSlimMessage('RS202')
+						'code' => 'RS202'
                     ];
-                    $roles = json_encode($data);
 				}
             }
-			return $roles;
+			return json_decode($roles,true);
 			$db = null;
         }
     }
